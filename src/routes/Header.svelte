@@ -28,16 +28,16 @@
 	}
 	.corner {
 		position: absolute;
-		width: 3em;
-		height: 3em;
+		width: 1.5rem;
+		height: 1.5rem;
 		top: 0;
 		right: 1rem;
 		display: flex;
-		gap: 0.5rem;
+		gap: 1rem;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		padding: 0.5rem;
+		padding: 1rem;
 	}
 	.corner a {
 		display: flex;

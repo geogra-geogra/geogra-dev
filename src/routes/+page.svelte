@@ -21,11 +21,11 @@
 
 <section>
 	<div class="index">
-	<ul>
-		<li><a href="#works">Works</a></li>
-		<li><a href="#careers">Careers</a></li>
-		<li><a href="#achievements">Achievements</a></li>
-	</ul>
+		<ul>
+			<li><a href="#works">Works</a></li>
+			<li><a href="#careers">Careers</a></li>
+			<li><a href="#achievements">Achievements</a></li>
+		</ul>
 	</div>
 	<h2 id="works">Works</h2>
 	{#each data.works as work (work._id)}
@@ -57,16 +57,16 @@
 		<ul>
 			{#each data.achievements as achievement (achievement._id)}
 				<li class="timeline-item">
-					<div class="timeline-date">
-						{achievement.conference}({DateConverter(achievement.date)})
-						{#each achievement.categories as category}
-							<span class="tag" style="background-color: {category.colorCode};"
-								>{category.name}</span
-							>
-						{/each}
-					</div>
-					<div class="timeline-content">
-						<a href={`${achievement.url}`} target="_blank" rel="noopener">
+					<a href={`${achievement.url}`} target="_blank" rel="noopener">
+						<div class="timeline-date">
+							{achievement.conference}({DateConverter(achievement.date)})
+							{#each achievement.categories as category}
+								<span class="tag" style="background-color: {category.colorCode};"
+									>{category.name}</span
+								>
+							{/each}
+						</div>
+						<div class="timeline-content">
 							<div class="author">{achievement.author}</div>
 							{achievement.title}
 							{#if achievement.award}
@@ -74,8 +74,8 @@
 									<span class="badge">{award}</span>
 								{/each}
 							{/if}
-						</a>
-					</div>
+						</div>
+					</a>
 				</li>
 			{/each}
 		</ul>
@@ -100,19 +100,24 @@
 		text-align: left;
 		text-indent: 1rem;
 	}
+	.index {
+		margin: 0 auto;
+		padding: 0.5rem;
+	}
 
 	.index ul {
 		display: flex;
+		flex-direction: row;
+		padding-inline-start: 0;
 	}
 	.index li {
 		list-style: none;
-		margin-left: 20px;
+		margin: 0 20px;
 	}
 
 	/* タイムラインのスタイル */
 	.column {
 		position: relative;
-		padding-left: 1rem; /* スペースを調整 */
 		width: 60%; /* 幅を60%に固定 */
 		max-width: 60%; /* 最大幅も60%に設定 */
 	}
@@ -141,6 +146,7 @@
 
 	.column ul {
 		padding-left: 0; /* デフォルトのリストスタイルを削除 */
+		padding-inline-start: 0;
 	}
 
 	.column li::before {
