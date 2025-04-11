@@ -2,7 +2,7 @@ import { newtClient } from '$lib/server/newt'
 import type { Achievements } from '$lib/server/newt'
 import type { Careers } from '$lib/server/newt'
 import type { Works } from '$lib/server/newt'
-import type { PageServerLoad } from './profile/$types'
+import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
   const { items: achievements } = await newtClient.getContents<Achievements>({
