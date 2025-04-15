@@ -16,6 +16,3 @@
 	<Careers {data} />
 	<Achievement {data} />
 </section>
-
-<style>
-</style>
