@@ -19,7 +19,27 @@
 	<ul>
 		{#each data.achievements as achievement (achievement._id)}
 			<li class="timeline-item">
-				<a href={`${achievement.url}`} target="_blank" rel="noopener">
+				{#if achievement.url}
+					<a href={`${achievement.url}`} target="_blank" rel="noopener">
+						<div class="timeline-date">
+							{achievement.conference}({DateConverter(achievement.date)})
+							{#each achievement.categories as category}
+								<span class="tag" style="background-color: {category.colorCode};"
+									>{category.name}</span
+								>
+							{/each}
+						</div>
+						<div class="timeline-content">
+							<div class="author">{achievement.author}</div>
+							{achievement.title}
+							{#if achievement.award}
+								{#each splitAwards(achievement.award) as award}
+									<span class="badge">{award}</span>
+								{/each}
+							{/if}
+						</div>
+					</a>
+				{:else}
 					<div class="timeline-date">
 						{achievement.conference}({DateConverter(achievement.date)})
 						{#each achievement.categories as category}
@@ -37,7 +57,7 @@
 							{/each}
 						{/if}
 					</div>
-				</a>
+				{/if}
 			</li>
 		{/each}
 	</ul>
