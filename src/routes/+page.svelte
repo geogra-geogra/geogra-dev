@@ -7,8 +7,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Shota Yamamoto|geogra.dev</title>
+	<meta name="description" content="地理学における可視化を統計的に扱いたいです。" />
 </svelte:head>
 
 <section>
