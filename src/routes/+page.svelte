@@ -8,7 +8,7 @@
 
 <svelte:head>
 	<title>Shota Yamamoto|geogra.dev</title>
-	<meta name="description" content="�n���w�ɂ���������𓝌v�I�Ɉ��������ł��B" />
+	<meta name="description" content="地理学における可視化を統計的に扱いたいです。" />
 </svelte:head>
 
 <section>
