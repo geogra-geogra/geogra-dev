@@ -4,7 +4,7 @@
 </script>
 
 <h2 id="works">Works</h2>
-{#each data.works as work (work._id)}
+{#each data.works as work (work.slug)}
 	<div class="card">
 		<a href={work.url} target="_blank" rel="noopener noreferrer">
 			<h3>{work.name}</h3>
