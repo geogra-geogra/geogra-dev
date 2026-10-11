@@ -6,7 +6,7 @@
 <h2 id="careers">Careers</h2>
 <div class="column careers">
 	<ul>
-		{#each data.careers as carrers (carrers._id)}
+		{#each data.careers as carrers (carrers.slug)}
 			<li class="timeline-item">
 				<div class="timeline-date">
 					{carrers.term}

@@ -2,9 +2,11 @@
 	import type { PageData } from './$types';
 	export let data: PageData;
 
+	/** Format a YYYY-MM-DD string as "YYYY.M.D" without timezone conversion. */
 	export const DateConverter = (dateString: string): string => {
-		const date = new Date(dateString);
-		return `${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`;
+		// Date を経由するとビルド環境(UTC)とブラウザ(JST)で日付がずれるため文字列を直接分解する
+		const [year, month, day] = dateString.split('-').map(Number);
+		return `${year}.${month}.${day}`;
 	};
 	export const splitAwards = (awardString: string | null | undefined): string[] => {
 		if (!awardString) {
@@ -17,7 +19,7 @@
 <h2 id="achievements">Achievements</h2>
 <div class="column achievements">
 	<ul>
-		{#each data.achievements as achievement (achievement._id)}
+		{#each data.achievements as achievement (achievement.slug)}
 			<li class="timeline-item">
 				{#if achievement.url}
 					<a href={`${achievement.url}`} target="_blank" rel="noopener">
