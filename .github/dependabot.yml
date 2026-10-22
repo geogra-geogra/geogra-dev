@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    # リリース直後のバージョンは避け、公開から一定期間経ったものだけを対象にする
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    # minor/patch はまとめて1つのPRにし、major は個別に確認する
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
