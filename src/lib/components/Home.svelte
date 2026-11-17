@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import Icon from '$lib/components/Icon.svelte';
-	import { ACHIEVEMENT_TYPES, HOME_PATH, UI, type Lang } from '$lib/i18n';
-	import type { PageContent } from '$lib/server/content';
+	import Icon from '#lib/components/Icon.svelte';
+	import { ACHIEVEMENT_TYPES, HOME_PATH, UI, type Lang } from '#lib/i18n.ts';
+	import type { PageContent } from '#lib/server/content.ts';
 
 	/** Top page body shared by the Japanese and English routes. */
 	let { data }: { data: PageContent } = $props();
