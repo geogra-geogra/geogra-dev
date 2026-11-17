@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { parse } from 'yaml';
-import { ACHIEVEMENT_TYPES, type AchievementType, type Lang } from '$lib/i18n';
+import { ACHIEVEMENT_TYPES, type AchievementType, type Lang } from '#lib/i18n.ts';
 import profileYaml from '../../content/profile.yaml?raw';
 import worksYaml from '../../content/works.yaml?raw';
 import careersYaml from '../../content/careers.yaml?raw';

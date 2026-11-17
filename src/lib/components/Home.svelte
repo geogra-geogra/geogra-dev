@@ -1,7 +1,8 @@
 <script lang="ts">
-	import Icon from '$lib/components/Icon.svelte';
-	import { ACHIEVEMENT_TYPES, HOME_PATH, UI, type Lang } from '$lib/i18n';
-	import type { PageContent } from '$lib/server/content';
+	import { resolve } from '$app/paths';
+	import Icon from '#lib/components/Icon.svelte';
+	import { ACHIEVEMENT_TYPES, HOME_PATH, UI, type Lang } from '#lib/i18n.ts';
+	import type { PageContent } from '#lib/server/content.ts';
 
 	/** Top page body shared by the Japanese and English routes. */
 	let { data }: { data: PageContent } = $props();
@@ -58,7 +59,7 @@
 				{#each langs as l (l.lang)}
 					<li>
 						<a
-							href={HOME_PATH[l.lang]}
+							href={resolve(HOME_PATH[l.lang])}
 							hreflang={l.lang}
 							lang={l.lang}
 							aria-current={l.lang === lang ? 'page' : undefined}>{l.label}</a
@@ -80,6 +81,7 @@
 			<ul class="links">
 				{#each profile.links as link, i (i)}
 					<li>
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- YAML に書いた外部サイトの URL なので resolve() の対象外 -->
 						<a href={link.url} target="_blank" rel="noopener noreferrer">
 							{#if link.icon}<Icon name={link.icon} />{/if}
 							{link.label}
@@ -122,6 +124,7 @@
 							{/if}
 							<p class="title">
 								{#if item.url}
+									<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- YAML に書いた外部サイトの URL なので resolve() の対象外 -->
 									<a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
 								{:else}
 									{item.title}
@@ -148,6 +151,7 @@
 		<ul class="works">
 			{#each works as work, i (i)}
 				<li>
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -- YAML に書いた外部サイトの URL なので resolve() の対象外 -->
 					<a class="work" href={work.url} target="_blank" rel="noopener noreferrer">
 						<h3>{work.name}</h3>
 						<p>{work.description}</p>

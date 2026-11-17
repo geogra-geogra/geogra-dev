@@ -1,4 +1,4 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle } from '@sveltejs/kit/hooks';
 
 // 英語ページ(/en)では <html lang> を en にする
 export const handle: Handle = ({ event, resolve }) => {

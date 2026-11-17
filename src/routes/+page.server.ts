@@ -1,4 +1,4 @@
-import { loadPage } from '$lib/server/content';
+import { loadPage } from '#lib/server/content.ts';
 import type { PageServerLoad } from './$types';
 
 // コンテンツはリポジトリ内の YAML なので、ビルド時に HTML として書き出す

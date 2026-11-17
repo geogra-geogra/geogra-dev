@@ -58,4 +58,4 @@ export const UI = {
 } as const;
 
 /** Path of the top page for each language. */
-export const HOME_PATH: Record<Lang, string> = { ja: '/', en: '/en' };
+export const HOME_PATH = { ja: '/', en: '/en' } as const satisfies Record<Lang, string>;
