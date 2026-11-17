@@ -15,10 +15,11 @@
 	/** Hostname shown under each work card. */
 	const host = (url: string): string => new URL(url).hostname.replace(/^www\./, '');
 
+	// 下の <section> の並び順に合わせる
 	const sections = [
-		{ id: 'works', label: 'Works' },
-		{ id: 'careers', label: 'Careers' },
-		{ id: 'achievements', label: 'Achievements' }
+		{ id: 'careers', label: '経歴' },
+		{ id: 'achievements', label: '発表・掲載' },
+		{ id: 'works', label: '作ったもの' }
 	];
 </script>
 
@@ -33,7 +34,7 @@
 
 <header class="site-header">
 	<div class="inner">
-		<a class="brand" href="#top">{profile.name}</a>
+		<a class="brand" href="#top">{profile.name}のページ</a>
 		<nav aria-label="ページ内リンク">
 			<ul>
 				{#each sections as section (section.id)}
@@ -52,7 +53,7 @@
 			{#if profile.nameEn}<p class="name-en">{profile.nameEn}</p>{/if}
 			<p class="bio">{profile.bio}</p>
 			<ul class="links">
-				{#each profile.links as link (link.url)}
+				{#each profile.links as link, i (i)}
 					<li>
 						<a href={link.url} target="_blank" rel="noopener noreferrer">
 							{#if link.icon}<Icon name={link.icon} />{/if}
@@ -64,35 +65,23 @@
 		</div>
 	</section>
 
-	<section id="works" aria-labelledby="works-title">
-		<h2 id="works-title">Works <span>作ったもの</span></h2>
-		<ul class="works">
-			{#each works as work (work.url)}
-				<li>
-					<a class="work" href={work.url} target="_blank" rel="noopener noreferrer">
-						<h3>{work.name}</h3>
-						<p>{work.description}</p>
-						<span class="host">{host(work.url)}</span>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</section>
-
 	<section id="careers" aria-labelledby="careers-title">
-		<h2 id="careers-title">Careers <span>経歴</span></h2>
+		<h2 id="careers-title">経歴 <span>Careers</span></h2>
 		<ol class="careers">
-			{#each careers as career (career.title)}
+			{#each careers as career, i (i)}
 				<li>
 					<span class="period">{career.period}</span>
-					<span class="career-title">{career.title}</span>
+					<div>
+						<p class="career-title">{career.title}</p>
+						{#if career.position}<p class="position">{career.position}</p>{/if}
+					</div>
 				</li>
 			{/each}
 		</ol>
 	</section>
 
 	<section id="achievements" aria-labelledby="achievements-title">
-		<h2 id="achievements-title">Achievements <span>発表・掲載</span></h2>
+		<h2 id="achievements-title">発表・掲載 <span>Achievements</span></h2>
 		{#each achievementYears as group (group.year)}
 			<div class="year">
 				<h3 class="year-label">{group.year}</h3>
@@ -103,6 +92,9 @@
 								<time datetime={item.date}>{monthDay(item.date)}</time>
 								<span class="tag tag-{item.type}">{typeLabels[item.type]}</span>
 							</div>
+							{#if item.authors.length > 0}
+								<p class="authors">{item.authors.join('、')}</p>
+							{/if}
 							<p class="title">
 								{#if item.url}
 									<a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
@@ -114,7 +106,7 @@
 							{#if item.note}<p class="note">{item.note}</p>{/if}
 							{#if item.awards.length > 0}
 								<ul class="awards">
-									{#each item.awards as award (award)}
+									{#each item.awards as award, j (j)}
 										<li>{award}</li>
 									{/each}
 								</ul>
@@ -124,6 +116,21 @@
 				</ol>
 			</div>
 		{/each}
+	</section>
+
+	<section id="works" aria-labelledby="works-title">
+		<h2 id="works-title">作ったもの <span>Works</span></h2>
+		<ul class="works">
+			{#each works as work, i (i)}
+				<li>
+					<a class="work" href={work.url} target="_blank" rel="noopener noreferrer">
+						<h3>{work.name}</h3>
+						<p>{work.description}</p>
+						<span class="host">{host(work.url)}</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
 	</section>
 </main>
 
@@ -180,16 +187,17 @@
 		background: var(--accent-soft);
 	}
 
-	/* 狭い画面ではヘッダーの名前を消してナビを優先する(名前はヒーローに出ている) */
-	@media (max-width: 420px) {
-		.brand {
-			display: none;
-		}
+	/* 狭い画面では名前とナビが横に並びきらないので 2 段にする */
+	@media (max-width: 520px) {
 		.inner {
-			justify-content: center;
+			height: auto;
+			flex-direction: column;
+			gap: 0.1rem;
+			padding-top: 0.5rem;
+			padding-bottom: 0.35rem;
 		}
 		nav a {
-			padding: 0.35rem 0.5rem;
+			padding: 0.25rem 0.6rem;
 		}
 	}
 
@@ -357,6 +365,11 @@
 		padding-top: 0.1rem;
 	}
 
+	.position {
+		font-size: 0.875rem;
+		color: var(--muted);
+	}
+
 	@media (max-width: 520px) {
 		.careers li {
 			grid-template-columns: 1fr;
@@ -425,6 +438,20 @@
 		color: var(--tag-misc-text);
 	}
 
+	.tag-paper {
+		background: var(--tag-paper-bg);
+		color: var(--tag-paper-text);
+	}
+
+	.tag-contest {
+		background: var(--tag-contest-bg);
+		color: var(--tag-contest-text);
+	}
+
+	.authors + .title {
+		margin-top: 0.1rem;
+	}
+
 	.title {
 		margin-top: 0.35rem;
 		font-weight: 700;
@@ -443,6 +470,12 @@
 	.venue {
 		margin-top: 0.15rem;
 		font-size: 0.875rem;
+	}
+
+	.authors {
+		margin-top: 0.35rem;
+		font-size: 0.8125rem;
+		color: var(--muted);
 	}
 
 	.note {

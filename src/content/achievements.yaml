@@ -2,12 +2,28 @@
 # どこに追加してもOK。表示時に日付の新しい順へ自動で並び、年ごとにまとまります。
 #
 # - date: 2025-03-01          必須 YYYY-MM-DD
-#   type: talk                必須 conference（学会発表） / talk（講演・LT） / misc（寄稿・掲載）
+#   type: talk                必須 paper（論文） / conference（学会発表） / talk（講演・LT） / contest（コンテスト） / misc（寄稿・掲載）
 #   title: タイトル           必須
 #   venue: 学会・イベント・媒体名  必須
-#   note: 著者や連載名など    省略可
+#   authors: 山本将大, 共著者  省略可 著者（カンマ区切り）
+#   note: 連載名など補足      省略可
 #   url: https://...          省略可
 #   awards: [賞の名前, ...]   省略可
+
+- date: 2026-08-27
+  type: conference
+  title: 'Tool Selection for Detailed Accessibility Analysis Using GTFS Data: The Case of the Yamagata Urban Area'
+  venue: FOSS4G 2026 Hiroshima
+  authors: Shota Yamamoto
+  note: 'The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences, Volume L-4/W1-2026 Free and Open Source Software for Geospatial (FOSS4G) 2026 – Academic Track “Bridging Geospatial Technology and Humanity”, 30 August–5 September 2026, Hiroshima, Japan'
+  url: https://isprs-archives.copernicus.org/articles/L-4-W1-2026/355/2026/isprs-archives-L-4-W1-2026-355-2026.html
+
+- date: 2026-03-28
+  type: conference
+  title: 「今昔マップ」表示地域の拡張とその技術的検討
+  venue: 2026年日本地理学会春季学術大会
+  authors: 栗山絵理, 山本将大, 岡本耕平, 小口高, 大西宏治, 斎藤敦, 瀬戸寿一, 鶴岡謙一, 山内啓之, 若林芳樹
+  url: https://www.jstage.jst.go.jp/article/ajg/2026s/0/2026s_189/_article/-char/ja/
 
 - date: 2026-01-27
   type: misc
@@ -39,14 +55,14 @@
   type: conference
   title: GTFSデータを使用した到達圏を解析・表示するQGISプラグインの開発
   venue: 第33回地理情報システム学会学術研究発表大会
-  note: 山本将大
+  authors: 山本将大
   url: https://pub.confit.atlas.jp/ja/event/gisa2024/presentation/E5-02
 
 - date: 2024-08-24
   type: conference
   title: 今昔マップの補完方法の検討
   venue: 2024年度 日本地図学会 定期大会
-  note: 栗山絵理， 山本将大，岡本耕平， 小口 高，大西宏治，斎藤 敦， 鶴岡謙一，山内啓之，若林芳樹
+  authors: 栗山絵理, 山本将大, 岡本耕平, 小口高, 大西宏治, 斎藤敦, 鶴岡謙一, 山内啓之, 若林芳樹
   url: https://doi.org/10.11212/jjca.62.supplement_7
 
 - date: 2024-05-10
@@ -57,10 +73,10 @@
   url: https://net.jmc.or.jp/shopdetail/000000531709/
 
 - date: 2023-11-08
-  type: conference
+  type: contest
   title: レイヤを重ねることに特化した地図ビューアの開発
   venue: Geoアクティビティコンテスト
-  note: 山本将大
+  authors: 山本将大
   url: https://internet.watch.impress.co.jp/docs/column/chizu3/1550453.html
   awards: [地理教育賞, 東京都立大学 学生特別表彰]
 
@@ -68,7 +84,7 @@
   type: conference
   title: 重ねることに特化した地図ビューアーの作成
   venue: 2023年度 日本地図学会 定期大会
-  note: 山本将大
+  authors: 山本将大
   url: https://www.jstage.jst.go.jp/article/jjca/61/3/61_12/_article/-char/ja
 
 - date: 2023-01-16

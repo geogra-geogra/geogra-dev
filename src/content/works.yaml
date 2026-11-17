@@ -16,10 +16,6 @@
   description: レイヤを重ねることに特化した地図ビューアの開発。
   url: https://mapmap.tokyo
 
-- name: 212みらい大志MAP
-  description: レジェンドマスコットが「みらい大志」の活動で道内各地を回った記録。
-  url: https://212map.baseball-mascot.com/
-
 - name: 到達圏連続表示QGISプラグイン
   description: OpenTripPlannerの到達圏表示をGUIだけで完結するプラグイン。
   url: https://plugins.qgis.org/plugins/qgis_otp_multi_isochrone_plugin/

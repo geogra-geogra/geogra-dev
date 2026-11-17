@@ -3,11 +3,27 @@
 #
 # - period: 2024.04〜
 #   title: 所属名
-- period: 2024.04.16〜
-  title: 札幌のGeoSpatialな会社
-
-- period: 2024.04.01〜
+#   position: 役職・職種   省略可
+- period: 2026.04.01〜
   title: 東京都立大学 都市環境科学研究科 地理環境学域
+  position: 博士後期課程
 
-- period: 2020.04.01〜2024.03.31
+- period: 2025.12.01〜
+  title: 合同会社モンテリブロ
+  position: 代表社員
+
+- period: 2025.12.16〜2026.9.30
+  title: 株式会社MIERUNE
+  position: Engagement Architect（契約）
+
+- period: 2024.04.16〜2025.12.15
+  title: 株式会社MIERUNE
+  position: Software Engineer, Engagement Architect（正社員）
+
+- period: 2024.04.01〜2026.03.27
+  title: 東京都立大学 都市環境科学研究科 地理環境学域
+  position: 修士（理学）
+
+- period: 2020.04.01〜2024.03.27
   title: 東京都立大学 都市環境学部 地理環境学科
+  position: 学士（理学）

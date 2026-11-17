@@ -6,8 +6,10 @@ import achievementsYaml from '../../content/achievements.yaml?raw';
 
 /** Achievement kinds and their display labels. */
 export const ACHIEVEMENT_TYPES = {
+	paper: '論文',
 	conference: '学会発表',
 	talk: '講演・LT',
+	contest: 'コンテスト',
 	misc: '寄稿・掲載'
 } as const;
 
@@ -42,6 +44,8 @@ export interface Career {
 	/** Free-form period label, e.g. "2020.04.01〜2024.03.31". */
 	period: string;
 	title: string;
+	/** Role or job title at the organization. */
+	position?: string;
 }
 
 /** Research output or publication (talk, paper, article, ...). */
@@ -51,7 +55,9 @@ export interface Achievement {
 	type: AchievementType;
 	title: string;
 	venue: string;
-	/** Authors, series name or other supplementary text. */
+	/** Author names in publication order. */
+	authors: string[];
+	/** Supplementary text such as a series or column name. */
 	note?: string;
 	url?: string;
 	awards: string[];
@@ -64,13 +70,36 @@ export interface AchievementYear {
 }
 
 // YAML の書き間違いはビルドを失敗させて、どのファイルの何件目が悪いかを日本語で知らせる
-class ContentError extends Error {
+export class ContentError extends Error {
 	constructor(file: string, where: string, message: string) {
 		super(`[src/content/${file}] ${where}: ${message}`);
 	}
 }
 
 type Row = Record<string, unknown>;
+
+/** Parse a YAML file, reporting syntax errors with the file name. */
+const parseYaml = (file: string, source: string): unknown => {
+	try {
+		return parse(source);
+	} catch (e) {
+		// yaml のエラーには行番号付きの位置情報が入っているのでそのまま見せる
+		throw new ContentError(file, 'YAMLの書き方', e instanceof Error ? e.message : String(e));
+	}
+};
+
+/** Reject keys that are not part of the schema, which usually means a typo. */
+const checkKeys = (file: string, where: string, row: Row, allowed: readonly string[]): void => {
+	for (const key of Object.keys(row)) {
+		if (!allowed.includes(key)) {
+			throw new ContentError(
+				file,
+				where,
+				`「${key}」は使えない項目名です。打ち間違いではありませんか？（使える項目: ${allowed.join(' / ')}）`
+			);
+		}
+	}
+};
 
 const asRows = (file: string, value: unknown): Row[] => {
 	if (!Array.isArray(value))
@@ -99,6 +128,17 @@ const optStr = (file: string, where: string, row: Row, key: string): string | un
 	return str(file, where, row, key);
 };
 
+/**
+ * Read an optional list of strings. A plain string is also accepted; when `splitString`
+ * is true it is split on commas so that author lists can be pasted as one line.
+ */
+const strList = (row: Row, key: string, splitString: boolean): string[] => {
+	const v = row[key];
+	if (v === undefined || v === null) return [];
+	const items = Array.isArray(v) ? v : splitString ? String(v).split(/[,，、]/) : [v];
+	return items.map((item) => String(item).trim()).filter((item) => item !== '');
+};
+
 const url = (file: string, where: string, value: string): string => {
 	if (!/^https?:\/\//.test(value)) {
 		throw new ContentError(file, where, `URL は http:// か https:// で始めてください（${value}）`);
@@ -108,7 +148,8 @@ const url = (file: string, where: string, value: string): string => {
 
 const loadProfile = (): Profile => {
 	const file = 'profile.yaml';
-	const row = parse(profileYaml) as Row;
+	const row = parseYaml(file, profileYaml) as Row;
+	checkKeys(file, 'ファイル全体', row, ['siteTitle', 'name', 'nameEn', 'bio', 'links']);
 	const links = row.links === undefined ? [] : asRows(file, row.links);
 	return {
 		siteTitle: str(file, 'siteTitle', row, 'siteTitle'),
@@ -117,6 +158,7 @@ const loadProfile = (): Profile => {
 		bio: str(file, 'bio', row, 'bio'),
 		links: links.map((link, i) => {
 			const where = `links ${i + 1}件目`;
+			checkKeys(file, where, link, ['label', 'url', 'icon']);
 			const icon = optStr(file, where, link, 'icon');
 			if (icon !== undefined && icon !== 'github' && icon !== 'x') {
 				throw new ContentError(file, where, `icon は github か x を指定してください（${icon}）`);
@@ -132,8 +174,9 @@ const loadProfile = (): Profile => {
 
 const loadWorks = (): Work[] => {
 	const file = 'works.yaml';
-	return asRows(file, parse(worksYaml)).map((row, i) => {
+	return asRows(file, parseYaml(file, worksYaml)).map((row, i) => {
 		const where = `${i + 1}件目`;
+		checkKeys(file, where, row, ['name', 'description', 'url']);
 		return {
 			name: str(file, where, row, 'name'),
 			description: str(file, where, row, 'description'),
@@ -144,17 +187,32 @@ const loadWorks = (): Work[] => {
 
 const loadCareers = (): Career[] => {
 	const file = 'careers.yaml';
-	return asRows(file, parse(careersYaml)).map((row, i) => {
+	return asRows(file, parseYaml(file, careersYaml)).map((row, i) => {
 		const where = `${i + 1}件目`;
-		return { period: str(file, where, row, 'period'), title: str(file, where, row, 'title') };
+		checkKeys(file, where, row, ['period', 'title', 'position']);
+		return {
+			period: str(file, where, row, 'period'),
+			title: str(file, where, row, 'title'),
+			position: optStr(file, where, row, 'position')
+		};
 	});
 };
 
 const loadAchievements = (): Achievement[] => {
 	const file = 'achievements.yaml';
 	const types = Object.keys(ACHIEVEMENT_TYPES);
-	return asRows(file, parse(achievementsYaml)).map((row, i) => {
+	return asRows(file, parseYaml(file, achievementsYaml)).map((row, i) => {
 		const where = `${i + 1}件目`;
+		checkKeys(file, where, row, [
+			'date',
+			'type',
+			'title',
+			'venue',
+			'authors',
+			'note',
+			'url',
+			'awards'
+		]);
 		const date = str(file, where, row, 'date');
 		if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
 			throw new ContentError(file, where, `date は YYYY-MM-DD 形式で書いてください（${date}）`);
@@ -163,19 +221,16 @@ const loadAchievements = (): Achievement[] => {
 		if (!types.includes(type)) {
 			throw new ContentError(file, where, `type は ${types.join(' / ')} のどれかです（${type}）`);
 		}
-		const rawAwards = row.awards ?? [];
-		const awards = (Array.isArray(rawAwards) ? rawAwards : [rawAwards]).map((a) =>
-			String(a).trim()
-		);
 		const link = optStr(file, where, row, 'url');
 		return {
 			date,
 			type: type as AchievementType,
 			title: str(file, where, row, 'title'),
 			venue: str(file, where, row, 'venue'),
+			authors: strList(row, 'authors', true),
 			note: optStr(file, where, row, 'note'),
 			url: link === undefined ? undefined : url(file, where, link),
-			awards: awards.filter((a) => a !== '')
+			awards: strList(row, 'awards', false)
 		};
 	});
 };

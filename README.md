@@ -19,10 +19,11 @@ SvelteKit で作った自己紹介ページです。ビルド時に静的 HTML �
 
 ```yaml
 - date: 2026-03-01 # 必須 YYYY-MM-DD
-  type: talk # 必須 conference（学会発表） / talk（講演・LT） / misc（寄稿・掲載）
+  type: talk # 必須 paper（論文） / conference（学会発表） / talk（講演・LT） / contest（コンテスト） / misc（寄稿・掲載）
   title: 発表タイトル # 必須
   venue: イベント名 # 必須
-  note: 著者や連載名など # 省略可
+  authors: 山本将大, 共著者 # 省略可
+  note: 連載名など # 省略可
   url: https://example.com # 省略可
   awards: [賞の名前] # 省略可
 ```

@@ -14,6 +14,10 @@
 	--tag-talk-text: #24713a;
 	--tag-misc-bg: #f6e6ee;
 	--tag-misc-text: #8c2f5c;
+	--tag-paper-bg: #ece6fb;
+	--tag-paper-text: #5a3ea6;
+	--tag-contest-bg: #fbe9dc;
+	--tag-contest-text: #9a4a12;
 	--radius: 12px;
 	--width: 46rem;
 	--gutter: 16px;
@@ -45,6 +49,10 @@
 		--tag-talk-text: #93d6a4;
 		--tag-misc-bg: #3a1f2c;
 		--tag-misc-text: #eba5c6;
+		--tag-paper-bg: #2a2342;
+		--tag-paper-text: #c4b5f5;
+		--tag-contest-bg: #3d2614;
+		--tag-contest-text: #f2b88c;
 	}
 }
 
@@ -58,6 +66,13 @@ html {
 	scroll-behavior: smooth;
 	/* sticky ヘッダーで見出しが隠れないようにする */
 	scroll-padding-top: 4rem;
+}
+
+/* スマホではヘッダーが 2 段になって高くなる */
+@media (max-width: 520px) {
+	html {
+		scroll-padding-top: 5.5rem;
+	}
 }
 
 body {
