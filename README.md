@@ -28,6 +28,21 @@ SvelteKit で作った自己紹介ページです。ビルド時に静的 HTML �
   awards: [賞の名前] # 省略可
 ```
 
+### 英語ページ (/en)
+
+日本語ページ `/` と英語ページ `/en` を同じ YAML から作っています。項目名の後ろに `En` を付けると英語ページ用の値になり、書かなければ日本語の値がそのまま出ます。
+
+```yaml
+- period: 2024.04.16〜2025.12.15 # 「〜」は英語ページでは自動で「–」になる
+  title: 株式会社MIERUNE
+  titleEn: MIERUNE Inc.
+  position: Software Engineer
+```
+
+英語にできる項目: `profile.yaml` の siteTitle / name / bio / links の label、`works.yaml` の name / description、`careers.yaml` の period / title / position、`achievements.yaml` の title / venue / authors / note / awards。
+
+見出しやメニューなど、YAML 以外の固定の文言は `src/lib/i18n.ts` にあります。
+
 書き方を間違えると、ビルドが「どのファイルの何件目の何が悪いか」を表示して止まるので、壊れたページが公開されることはありません。
 
 ## 開発

@@ -4,18 +4,25 @@
 # - name: 名前
 #   description: 一言説明
 #   url: https://...
+#
+# 英語ページ用に nameEn / descriptionEn を書けます（省略すると日本語のまま）。
 - name: 球団マスコットの情報。
   description: プロ野球12球団マスコットの出演情報を取りまとめているサイト。
+  descriptionEn: A site that compiles appearance information for the mascots of Japan's 12 professional baseball teams.
   url: https://baseball-mascot.com
 
 - name: 東京歴史MAPMAP
   description: 江戸・明治・昭和期の江戸東京の復元地図を閲覧できるビューア。
+  descriptionEn: A viewer for reconstructed maps of Edo-Tokyo in the Edo, Meiji and Showa periods.
   url: https://jhico.org/map/
 
 - name: mapmap.tokyo
   description: レイヤを重ねることに特化した地図ビューアの開発。
+  descriptionEn: A map viewer specialized in overlaying layers.
   url: https://mapmap.tokyo
 
 - name: 到達圏連続表示QGISプラグイン
+  nameEn: OTP Multi Isochrone QGIS Plugin
   description: OpenTripPlannerの到達圏表示をGUIだけで完結するプラグイン。
+  descriptionEn: A QGIS plugin that runs OpenTripPlanner isochrone analysis entirely from the GUI.
   url: https://plugins.qgis.org/plugins/qgis_otp_multi_isochrone_plugin/

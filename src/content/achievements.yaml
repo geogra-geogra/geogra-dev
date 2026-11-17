@@ -9,6 +9,8 @@
 #   note: 連載名など補足      省略可
 #   url: https://...          省略可
 #   awards: [賞の名前, ...]   省略可
+#
+# 英語ページ用に titleEn / venueEn / authorsEn / noteEn / awardsEn を書けます（省略すると日本語のまま）。
 
 - date: 2026-08-27
   type: conference
@@ -21,8 +23,10 @@
 - date: 2026-03-28
   type: conference
   title: 「今昔マップ」表示地域の拡張とその技術的検討
+  titleEn: Extension of the Time Series Topographic Map Viewer "Konjyaku Map" and Its Technical Review
   venue: 2026年日本地理学会春季学術大会
   authors: 栗山絵理, 山本将大, 岡本耕平, 小口高, 大西宏治, 斎藤敦, 瀬戸寿一, 鶴岡謙一, 山内啓之, 若林芳樹
+  authorsEn: Eri Kuriyama, Shota Yamamoto, Kohei Okamoto, Takashi Oguchi, Koji Ohnishi, Atsushi Saito, Toshikazu Seto, Ken’ichi Tsuruoka, Hiroyuki Yamauchi, Yoshiki Wakabayashi
   url: https://www.jstage.jst.go.jp/article/ajg/2026s/0/2026s_189/_article/-char/ja/
 
 - date: 2026-01-27
@@ -54,6 +58,7 @@
 - date: 2024-10-27
   type: conference
   title: GTFSデータを使用した到達圏を解析・表示するQGISプラグインの開発
+  titleEn: Development of a QGIS Plugin for Analyzing and Displaying Isochrones Using GTFS Data
   venue: 第33回地理情報システム学会学術研究発表大会
   authors: 山本将大
   url: https://pub.confit.atlas.jp/ja/event/gisa2024/presentation/E5-02
@@ -61,8 +66,10 @@
 - date: 2024-08-24
   type: conference
   title: 今昔マップの補完方法の検討
+  titleEn: Exploring complementary methods for the Time Series Topographic Map Viewer "Konjyaku Map"
   venue: 2024年度 日本地図学会 定期大会
   authors: 栗山絵理, 山本将大, 岡本耕平, 小口高, 大西宏治, 斎藤敦, 鶴岡謙一, 山内啓之, 若林芳樹
+  authorsEn: Eri KURIYAMA, Syota YAMAMOTO, Kohei OKAMOTO, Takashi OGUCHI, Koji OHNISHI, Atsushi SAITO, Ken’ichi TSURUOKA, Hiroyuki YAMAUCHI, Yoshiki WAKABAYASHI
   url: https://doi.org/10.11212/jjca.62.supplement_7
 
 - date: 2024-05-10
@@ -83,8 +90,10 @@
 - date: 2023-08-26
   type: conference
   title: 重ねることに特化した地図ビューアーの作成
+  titleEn: Developing a Map Viewer with a Focus on Layering
   venue: 2023年度 日本地図学会 定期大会
   authors: 山本将大
+  authorsEn: Shota Yamamoto
   url: https://www.jstage.jst.go.jp/article/jjca/61/3/61_12/_article/-char/ja
 
 - date: 2023-01-16

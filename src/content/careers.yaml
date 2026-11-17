@@ -4,26 +4,41 @@
 # - period: 2024.04〜
 #   title: 所属名
 #   position: 役職・職種   省略可
+#
+# 英語ページ用に titleEn / positionEn / periodEn を書けます（省略すると日本語のまま）。
+# period の「〜」は英語ページでは自動で「–」になります。
 - period: 2026.04.01〜
   title: 東京都立大学 都市環境科学研究科 地理環境学域
+  titleEn: Department of Geography, Graduate School of Urban Environmental Sciences, Tokyo Metropolitan University
   position: 博士後期課程
+  positionEn: Doctoral Program
 
 - period: 2025.12.01〜
   title: 合同会社モンテリブロ
+  titleEn: MonteLibro LLC
   position: 代表社員
+  positionEn: Representative Member
 
 - period: 2025.12.16〜2026.9.30
   title: 株式会社MIERUNE
+  titleEn: MIERUNE Inc.
   position: Engagement Architect（契約）
+  positionEn: Engagement Architect (Contract)
 
 - period: 2024.04.16〜2025.12.15
   title: 株式会社MIERUNE
+  titleEn: MIERUNE Inc.
   position: Software Engineer, Engagement Architect（正社員）
+  positionEn: Software Engineer, Engagement Architect (Full-time)
 
 - period: 2024.04.01〜2026.03.27
   title: 東京都立大学 都市環境科学研究科 地理環境学域
+  titleEn: Department of Geography, Graduate School of Urban Environmental Sciences, Tokyo Metropolitan University
   position: 修士（理学）
+  positionEn: Master of Science
 
 - period: 2020.04.01〜2024.03.27
   title: 東京都立大学 都市環境学部 地理環境学科
+  titleEn: Department of Geography, Faculty of Urban Environmental Sciences, Tokyo Metropolitan University
   position: 学士（理学）
+  positionEn: Bachelor of Science

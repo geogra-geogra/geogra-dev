@@ -1,8 +1,11 @@
 # プロフィール（ページ上部とタイトルに使われます）
+# 項目名の後ろに En を付けると英語ページ(/en)用の値になります。省略すると日本語がそのまま出ます。
 siteTitle: 山本将大のページ
+siteTitleEn: Shota Yamamoto
 name: 山本将大
 nameEn: Shota Yamamoto
 bio: 地理学の観点から、地理空間情報の利活用やオープンデータの活用に関する研究・開発を行っています。
+bioEn: From a geographical perspective, I research and develop ways to make use of geospatial information and open data.
 # icon は github / x のどちらかを指定するとアイコンが付きます（省略可）
 links:
   - label: GitHub
