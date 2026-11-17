@@ -1,0 +1,83 @@
+# Achievements（業績・発表・掲載）
+# どこに追加してもOK。表示時に日付の新しい順へ自動で並び、年ごとにまとまります。
+#
+# - date: 2025-03-01          必須 YYYY-MM-DD
+#   type: talk                必須 conference（学会発表） / talk（講演・LT） / misc（寄稿・掲載）
+#   title: タイトル           必須
+#   venue: 学会・イベント・媒体名  必須
+#   note: 著者や連載名など    省略可
+#   url: https://...          省略可
+#   awards: [賞の名前, ...]   省略可
+
+- date: 2026-01-27
+  type: misc
+  title: デジタル歴史地図のあゆみ
+  venue: GIS NEXT 94号
+  note: 日本地図学会 地図のチカラ
+  url: http://www.nextpb.com/gisnext/backnumber/no94.html
+
+- date: 2025-03-01
+  type: talk
+  title: 連続的な到達圏を表示するQGISプラグインを作ってみた
+  venue: 公共交通オープンデータ最前線2025
+  url: https://www.busdata.or.jp/odd2025_shiryo/
+
+- date: 2025-01-20
+  type: misc
+  title: レイヤを重ねることに特化した地図ビューアの開発
+  venue: 月刊「測量」2025年1月号
+  note: G空間EXPO2023 Geoアクティビティコンテスト 受賞作品紹介
+  url: https://www.jsurvey.jp/1-4-2025.htm
+
+- date: 2024-11-20
+  type: talk
+  title: 趣味をそのまま仕事にしてしまった方に研究活動をおすすめする話
+  venue: MIERUNE BBQ #13
+  url: https://mierune.connpass.com/event/335812/
+
+- date: 2024-10-27
+  type: conference
+  title: GTFSデータを使用した到達圏を解析・表示するQGISプラグインの開発
+  venue: 第33回地理情報システム学会学術研究発表大会
+  note: 山本将大
+  url: https://pub.confit.atlas.jp/ja/event/gisa2024/presentation/E5-02
+
+- date: 2024-08-24
+  type: conference
+  title: 今昔マップの補完方法の検討
+  venue: 2024年度 日本地図学会 定期大会
+  note: 栗山絵理， 山本将大，岡本耕平， 小口 高，大西宏治，斎藤 敦， 鶴岡謙一，山内啓之，若林芳樹
+  url: https://doi.org/10.11212/jjca.62.supplement_7
+
+- date: 2024-05-10
+  type: misc
+  title: 江戸・明治・現代の地図を重ねて見られる「東京歴史MAPMAP」
+  venue: 地図中心2024年5月号
+  note: 《地図づくり最前線 019》
+  url: https://net.jmc.or.jp/shopdetail/000000531709/
+
+- date: 2023-11-08
+  type: conference
+  title: レイヤを重ねることに特化した地図ビューアの開発
+  venue: Geoアクティビティコンテスト
+  note: 山本将大
+  url: https://internet.watch.impress.co.jp/docs/column/chizu3/1550453.html
+  awards: [地理教育賞, 東京都立大学 学生特別表彰]
+
+- date: 2023-08-26
+  type: conference
+  title: 重ねることに特化した地図ビューアーの作成
+  venue: 2023年度 日本地図学会 定期大会
+  note: 山本将大
+  url: https://www.jstage.jst.go.jp/article/jjca/61/3/61_12/_article/-char/ja
+
+- date: 2023-01-16
+  type: talk
+  title: 山本の野望
+  venue: スリバチナイト15(東京カルチャーカルチャー)
+  url: https://tokyocultureculture.com/event/general/33900
+
+- date: 2022-02-17
+  type: talk
+  title: 街の歴史がつながる！身近で使えるデジタル地図の世界
+  venue: 日本橋朝会

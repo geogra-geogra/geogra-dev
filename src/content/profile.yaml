@@ -1,0 +1,13 @@
+# プロフィール（ページ上部とタイトルに使われます）
+siteTitle: 山本将大のページ
+name: 山本将大
+nameEn: Shota Yamamoto
+bio: 地理学における可視化を統計的に扱いたいです。
+# icon は github / x のどちらかを指定するとアイコンが付きます（省略可）
+links:
+  - label: GitHub
+    url: https://github.com/geogra-geogra/
+    icon: github
+  - label: X
+    url: https://x.com/geogra_geogra/
+    icon: x

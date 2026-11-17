@@ -1,218 +1,99 @@
-@import '@fontsource/fira-mono';
-
 :root {
-	--font-body: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--color-bg-0: rgb(202, 216, 228);
-	--color-bg-1: hsl(209, 36%, 86%);
-	--color-bg-2: hsl(224, 44%, 95%);
-	--color-theme-1: #ff3e00;
-	--color-theme-2: #4075a6;
-	--color-text: rgba(0, 0, 0, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
-	font-family: var(--font-body);
-	color: var(--color-text);
-}
+	--bg: #f7f7f4;
+	--surface: #ffffff;
+	--text: #1d2125;
+	--muted: #5f6870;
+	--border: #e3e3dd;
+	--accent: #0a6c86;
+	--accent-soft: #e2f1f5;
+	--award-bg: #fff1d6;
+	--award-text: #8a5300;
+	--tag-conference-bg: #e2ecfb;
+	--tag-conference-text: #234f9c;
+	--tag-talk-bg: #e3f4e6;
+	--tag-talk-text: #24713a;
+	--tag-misc-bg: #f6e6ee;
+	--tag-misc-text: #8c2f5c;
+	--radius: 12px;
+	--width: 46rem;
+	--gutter: 16px;
 
-body {
-	min-height: 100vh;
-	margin: 0;
-	background-attachment: fixed;
-}
-
-section {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-
-}
-
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--color-text);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-h1 {
-	font-size: 2rem;
-	text-align: center;
-	padding: 1rem;
-	margin: 1rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	text-align: center;
-	padding:1rem 0 .5rem;
-	margin: 0;
-}
-
-h3{
-	font-size: 1.25rem;
-	text-align: center;
-	padding:1rem 0 .25rem;
-
-}
-
-pre {
+	color-scheme: light dark;
+	font-family:
+		'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic UI', Meiryo, system-ui,
+		sans-serif;
 	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--color-text);
+	line-height: 1.7;
+	color: var(--text);
+	-webkit-text-size-adjust: 100%;
 }
 
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button:focus:not(:focus-visible) {
-	outline: none;
-}
-
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #121517;
+		--surface: #1a1e21;
+		--text: #e5e8ea;
+		--muted: #9aa4ac;
+		--border: #2c3236;
+		--accent: #5ec4de;
+		--accent-soft: #16323a;
+		--award-bg: #3a2b10;
+		--award-text: #f3c56b;
+		--tag-conference-bg: #1d2c45;
+		--tag-conference-text: #9dbdf2;
+		--tag-talk-bg: #1b3322;
+		--tag-talk-text: #93d6a4;
+		--tag-misc-bg: #3a1f2c;
+		--tag-misc-text: #eba5c6;
 	}
 }
 
-.visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
-
-
-.card {
-	width: 60%;
-	align-items: center;
-	margin: 0.5rem 0 1rem;
-	padding: 0 0 0.5rem;
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
-	background-color: var(--background);
-	border-radius: 8px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-	text-align: left;
-}
-.card h3 {
-	margin: 0.5rem 0;
-	font-size: 1.2rem;
-	text-align: left;
-	text-indent: 1rem;
-}
-.index {
-	margin: 0 auto;
-	padding: 0.5rem;
 }
 
-.index ul {
-	display: flex;
-	flex-direction: row;
-	padding-inline-start: 0;
+html {
+	scroll-behavior: smooth;
+	/* sticky ヘッダーで見出しが隠れないようにする */
+	scroll-padding-top: 4rem;
 }
-.index li {
+
+body {
+	margin: 0;
+	background: var(--bg);
+	overflow-wrap: anywhere;
+}
+
+a {
+	color: var(--accent);
+	text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+	margin: 0;
+}
+
+ul,
+ol {
+	padding: 0;
 	list-style: none;
-	margin: 0 20px;
 }
 
-/* タイムラインのスタイル */
-.column {
-	position: relative;
-	width: 60%; /* 幅を60%に固定 */
-	max-width: 60%; /* 最大幅も60%に設定 */
-}
-
-.column li {
-	list-style-type: none;
-}
-.badge {
-	display: inline-block;
-	align-items: center;
-	justify-content: center;
-	background-color: #ff8c00;
-	color: #fff;
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.2rem;
-	font-size: 0.8rem;
-	margin-left: 0.5rem;
-}
-
-.tag {
-	padding: 0.2rem 0.5rem;
-	border-radius: 0.2rem;
-	font-size: 0.8rem;
-	margin-left: 0.5rem;
-}
-
-.column ul {
-	padding-left: 0; /* デフォルトのリストスタイルを削除 */
-	padding-inline-start: 0;
-}
-
-.column li::before {
-	content: '';
-	position: absolute;
-	left: -1.5rem; /* 左側のスペースを確保 */
-	top: 0.5rem; /* 上からの位置 */
-	width: 10px; /* 矢印の幅 */
-	height: 10px; /* 矢印の高さ */
-	background-color: #007bff; /* 矢印の色 */
-	border-radius: 50%; /* 丸くする */
-}
-
-.column li::after {
-	content: '';
-	position: absolute;
-	left: -1.25rem; /* 左側のスペースを確保 */
-	top: 1.5rem; /* 上からの位置 */
-	width: 2px; /* 矢印の幅 */
-	height: calc(100% - 1.5rem); /* 矢印の高さ */
-	background-color: #007bff; /* 矢印の色 */
-}
-
-.column li a {
-	text-decoration: none;
-	color: inherit;
-}
-
-.author {
-	font-size: 0.8rem;
-}
-
-.timeline-item {
-	margin-bottom: 1rem;
-	position: relative; /* Add relative positioning */
-	padding: 0.5rem; /* Add some padding to the content */
-	background-color: #f9f9f9; /* Light background color */
-	border-radius: 5px; /* Rounded corners */
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-}
-
-.timeline-date {
-	font-size: 0.8rem;
-}
-
-.timeline-content {
-	font-weight: bold; /* 内容を太字にする */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }
