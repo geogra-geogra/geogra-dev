@@ -1,38 +1,55 @@
-# sv
+# 山本将大のページ (geogra.dev)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+SvelteKit で作った自己紹介ページです。ビルド時に静的 HTML として書き出し、Cloudflare にデプロイしています。
 
-## Creating a project
+## 内容の更新方法
 
-If you're seeing this, you've probably already done this step. Congrats!
+ページに載せる内容はすべて `src/content/` の YAML ファイルにあります。コードを触らずに、このファイルを書き換えるだけで更新できます（GitHub の Web 画面から直接編集しても OK）。
 
-```bash
-# create a new project in the current directory
-npx sv create
+| ファイル            | 内容                                   | 並び順                                       |
+| ------------------- | -------------------------------------- | -------------------------------------------- |
+| `profile.yaml`      | 名前・自己紹介・リンク・ページタイトル | -                                            |
+| `works.yaml`        | 作ったもの                             | 書いた順                                     |
+| `careers.yaml`      | 経歴                                   | 書いた順（新しいものを上に）                 |
+| `achievements.yaml` | 発表・掲載                             | 日付の新しい順に自動で並び、年ごとにまとまる |
 
-# create a new project in my-app
-npx sv create my-app
+### 業績を 1 件追加する例
+
+`src/content/achievements.yaml` のどこかに追記します。
+
+```yaml
+- date: 2026-03-01 # 必須 YYYY-MM-DD
+  type: talk # 必須 paper（論文） / conference（学会発表） / talk（講演・LT） / contest（コンテスト） / misc（寄稿・掲載）
+  title: 発表タイトル # 必須
+  venue: イベント名 # 必須
+  authors: 山本将大, 共著者 # 省略可
+  note: 連載名など # 省略可
+  url: https://example.com # 省略可
+  awards: [賞の名前] # 省略可
 ```
 
-## Developing
+### 英語ページ (/en)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+日本語ページ `/` と英語ページ `/en` を同じ YAML から作っています。項目名の後ろに `En` を付けると英語ページ用の値になり、書かなければ日本語の値がそのまま出ます。
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```yaml
+- period: 2024.04.16〜2025.12.15 # 「〜」は英語ページでは自動で「–」になる
+  title: 株式会社MIERUNE
+  titleEn: MIERUNE Inc.
+  position: Software Engineer
 ```
 
-## Building
+英語にできる項目: `profile.yaml` の siteTitle / name / bio / links の label、`works.yaml` の name / description、`careers.yaml` の period / title / position、`achievements.yaml` の title / venue / authors / note / awards。
 
-To create a production version of your app:
+見出しやメニューなど、YAML 以外の固定の文言は `src/lib/i18n.ts` にあります。
+
+書き方を間違えると、ビルドが「どのファイルの何件目の何が悪いか」を表示して止まるので、壊れたページが公開されることはありません。
+
+## 開発
 
 ```bash
-npm run build
+pnpm install
+pnpm dev      # http://localhost:5173
+pnpm check    # 型チェック
+pnpm build    # 本番ビルド（YAML の検証もここで走る）
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
